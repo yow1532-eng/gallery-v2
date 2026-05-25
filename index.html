@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Pro Final</title>
+    <!-- 외부 라이브러리 -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <!-- CSS 파일 연결 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <button class="back-btn" id="backBtn">‹</button>
+        <h1 id="navTitle">GALLERY</h1>
+        <button class="add-btn" id="openModal">+ 추가</button>
+    </nav>
+
+    <div class="page active" id="gridPage">
+        <div class="grid-wrap"><div class="grid" id="grid"></div></div>
+    </div>
+
+    <div class="page" id="detailPage">
+        <div class="detail-wrap"><div class="detail-images" id="detailImages"></div></div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">✕</button>
+        <span class="lightbox-counter" id="lightboxCounter"></span>
+        <div class="lightbox-img-wrap" id="lightboxWrap">
+            <button class="lightbox-arrow prev" id="lightboxPrev">‹</button>
+            <img id="lightboxImg" src="" alt="">
+            <button class="lightbox-arrow next" id="lightboxNext">›</button>
+        </div>
+        <div class="lightbox-thumbs" id="lightboxThumbs"></div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-box">
+            <h2 id="modalTitle">새 게시글</h2>
+            <div class="file-drop" id="fileDrop">
+                <input type="file" id="fileInput" accept="image/*" multiple>
+                <p>클릭하거나 사진을 드래그하세요</p>
+            </div>
+            <div class="preview-grid" id="previewGrid"></div>
+            <div class="uploading" id="uploadingMsg" style="display:none;">처리 중...</div>
+            <div class="modal-actions">
+                <div class="left-group">
+                    <button class="btn-image-crop" id="bottomImageCropBtn">✂️ 사진크롭</button>
+                    <button class="btn-thumb-crop" id="bottomThumbCropBtn">🟡 썸네일크롭</button>
+                </div>
+                <div class="right-group">
+                    <button class="btn-cancel" id="closeModal">취소</button>
+                    <button class="btn-save" id="savePost">저장</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="crop-modal" id="cropModal">
+        <p class="crop-title" id="cropTitle">영역을 선택하세요</p>
+        <div class="crop-container" id="cropContainer">
+            <img id="cropImg" src="" alt="crop">
+            <div class="crop-selection" id="cropSelection" style="display:none;"></div>
+        </div>
+        <div class="crop-actions">
+            <button class="btn-crop-cancel" id="cropCancelBtn">취소</button>
+            <button class="btn-crop-reset" id="cropResetBtn">초기화</button>
+            <button class="btn-crop-apply" id="cropApplyBtn">적용</button>
+        </div>
+    </div>
+
+    <div class="confirm-modal" id="confirmModal">
+        <div class="confirm-box">
+            <p>이 게시글을 삭제할까요?</p>
+            <div class="confirm-actions">
+                <button class="btn-confirm-cancel" id="confirmCancelBtn">취소</button>
+                <button class="btn-confirm-delete" id="confirmDeleteBtn">삭제</button>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="cropCanvas" style="display:none;"></canvas>
+
+    <!-- 자바스크립트 파일 연결 -->
+    <script src="script.js"></script>
+</body>
+</html>
