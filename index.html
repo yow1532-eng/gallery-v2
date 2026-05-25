@@ -39,10 +39,11 @@
     <div class="modal" id="modal">
         <div class="modal-box">
             <h2 id="modalTitle">새 게시글</h2>
-            <div class="file-drop" id="fileDrop">
-                <input type="file" id="fileInput" accept="image/*" multiple>
-                <p>클릭하거나 사진을 드래그하세요</p>
-            </div>
+           <div class="file-drop" id="fileDrop">
+    <p>클릭하거나 사진을 드래그하세요</p>
+</div>
+<!-- input을 div 바깥으로 꺼내고 style로 숨깁니다 -->
+<input type="file" id="fileInput" accept="image/*" multiple style="display:none;">
             <div class="preview-grid" id="previewGrid"></div>
             <div class="uploading" id="uploadingMsg" style="display:none;">처리 중...</div>
             <div class="modal-actions">
